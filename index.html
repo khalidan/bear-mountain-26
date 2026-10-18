@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bear Mountain Hike</title>
+<meta name="description" content="Sunday, October 25 — pick your ride from NYC and vote on the trail to the summit of Bear Mountain.">
+<meta property="og:title" content="Bear Mountain Hike · Sunday, Oct 25">
+<meta property="og:description" content="Pick your ride from NYC and vote on the trail to the summit.">
+<meta property="og:image" content="img/bridge-1200.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ───────── Settings you may want to edit ───────── */
+/* (Script settings are in the CONFIG block near the bottom of this file.) */
+
+:root{
+  --slate:#1C2B30;      /* Hudson slate */
+  --slate-2:#2C3F45;
+  --mist:#E9ECEA;       /* ridge mist */
+  --paper:#F7F8F6;
+  --line:#C9D0CD;
+  --muted:#5A6B70;
+  --dusk:#9AA6D6;       /* skyline sky */
+  --amber:#E0962A;      /* oak leaves */
+  --amber-ink:#8A5408;
+  --red:#C8432B;        /* wreath ribbon, warnings only */
+  --blaze-white:#F4F4F0;
+  --blaze-red:#C8432B;
+  --blaze-blue:#2F6DB5;
+  --bg:var(--mist); --surface:var(--paper); --ink:var(--slate); --ink-soft:var(--muted);
+  --display:"Big Shoulders Display", "Arial Narrow", sans-serif;
+  --body:"Public Sans", system-ui, sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121B1E; --surface:#1A272B; --ink:#E6EAE8; --ink-soft:#9DAEB2; --line:#2F4248; --amber-ink:#F0B35A;
+  }
+}
+:root[data-theme="dark"]{ --bg:#121B1E; --surface:#1A272B; --ink:#E6EAE8; --ink-soft:#9DAEB2; --line:#2F4248; --amber-ink:#F0B35A; }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:.95;margin:0;letter-spacing:.005em}
+h2{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800}
+h3{font-size:1.9rem;font-weight:800}
+p{margin:0 0 1em;max-width:66ch}
+.lede{font-size:1.15rem;color:var(--ink-soft)}
+section{padding:clamp(64px,9vw,120px) 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:40px}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+.sec-head p{margin:0}
+
+/* ───────── Hero ───────── */
+.hero{position:relative;min-height:min(100svh,880px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#1a2326}
+.hero picture,.hero img.bg{position:absolute;inset:0;width:100%;height:100%}
+.hero img.bg{object-fit:cover;object-position:62% 45%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,27,30,.15) 0%,rgba(18,27,30,.05) 35%,rgba(18,27,30,.78) 78%,rgba(18,27,30,.95) 100%)}
+.hero .wrap{position:relative;z-index:2;padding:0 0 clamp(28px,5vw,56px)}
+.profile{position:absolute;left:0;right:0;bottom:0;z-index:1;width:100%;height:58%;pointer-events:none}
+.profile path.ridge{fill:none;stroke:var(--amber);stroke-width:3;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.4s .4s cubic-bezier(.6,.05,.3,1) forwards}
+.profile path.fill{fill:url(#ridgeFill);opacity:0;animation:fade 1.2s 1.8s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.profile path.ridge{animation:none;stroke-dashoffset:0}.profile path.fill{animation:none;opacity:1}}
+.peak-tag{position:absolute;z-index:2;font:700 .85rem/1.2 var(--body);color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.peak-tag b{display:block;font:800 1.5rem/1 var(--display);color:var(--amber)}
+.peak-tag.summit{left:84%;top:calc(42% + 5.8%);transform:translate(-50%,calc(-100% - 14px));text-align:center}
+.peak-tag.summit::after{content:"";position:absolute;left:50%;bottom:-12px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(224,150,42,.3)}
+@media (max-width:700px){.profile{height:34%}.peak-tag.summit{display:none}.when strong{font-size:1.5rem}.when{gap:8px 24px}}
+.hero h1{font-size:clamp(4.2rem,15vw,11.5rem);font-weight:900;text-transform:uppercase;line-height:.82;margin-bottom:18px;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.when{display:flex;flex-wrap:wrap;gap:10px 36px;font-size:1.1rem;margin-bottom:28px}
+.when strong{display:block;font:800 1.9rem/1 var(--display);color:#fff}
+.when span{color:#D7DEDC}
+.hero-links{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 1rem/1 var(--body);padding:15px 22px;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;background:var(--amber);color:#1C1406;transition:transform .15s, background .15s}
+.btn:hover{background:#EBA645}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
+.btn.small{padding:10px 16px;font-size:.92rem}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+
+/* demo banner */
+.demo{background:var(--dusk);color:#141C3A;font-size:.92rem;padding:10px 16px;text-align:center}
+
+/* ───────── The day (timeline) ───────── */
+.day{background:var(--slate);color:#E6EAE8}
+.day .lede{color:#B6C3C6}
+.timeline{position:relative;margin-top:24px;padding-top:8px}
+.tl-bar{position:relative;height:56px;border-radius:12px;overflow:hidden;
+  background:linear-gradient(90deg,#3B5560 0%,#5D7C7F 18%,#8DA9A2 45%,#C7B68A 72%,#E0962A 84.5%,#5B4E7D 90%,#2A2F4E 100%)}
+.tl-sun{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:#fff}
+.tl-hike{position:absolute;top:auto;bottom:0;height:8px;background:rgba(18,27,30,.55)}
+.tl-marks{position:relative;height:24px}
+.tl-mark{position:absolute;bottom:4px;transform:translateX(-50%);font-weight:700;font-size:.85rem;color:var(--amber);white-space:nowrap}
+.tl-note{font-size:.92rem;color:#9FB0B5;margin:22px 0 0;max-width:72ch}
+.tl-events{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 18px;margin-top:22px}
+.tl-events li{border-top:2px solid #4A6168;padding-top:12px}
+.tl-events time{display:block;font:800 1.6rem/1 var(--display);color:#fff;margin-bottom:6px}
+.tl-events a{color:#fff}
+.tl-events li.key{border-top-color:var(--amber)}
+.tl-events li.key time{color:var(--amber)}
+.tl-events p{font-size:.95rem;color:#C2CDD0;margin:0}
+.tl-scale{display:flex;justify-content:space-between;font-size:.8rem;color:#8FA2A7;margin-top:6px}
+@media (max-width:900px){.tl-events{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ───────── Getting there ───────── */
+.picker{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:28px}
+.picker .q{font-weight:700;margin-right:4px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{font:600 .98rem/1 var(--body);padding:11px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--slate);color:#fff;border-color:var(--slate)}
+:root[data-theme="dark"] .seg button[aria-pressed="true"]{background:var(--amber);color:#1C1406;border-color:var(--amber)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .seg button[aria-pressed="true"]{background:var(--amber);color:#1C1406;border-color:var(--amber)}}
+
+.routes{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.route{border-bottom:1px solid var(--line)}
+.route>button.head{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 150px 170px 28px;gap:16px;align-items:center;padding:22px 4px}
+.route>button.head:focus-visible{outline:3px solid var(--amber);outline-offset:-3px}
+.route .name{font:800 1.75rem/1.02 var(--display)}
+.route .sub{display:block;font:400 .97rem/1.4 var(--body);color:var(--ink-soft);margin-top:6px}
+.route .best{display:inline-block;font:700 .78rem/1 var(--body);background:var(--amber);color:#1C1406;padding:5px 9px;border-radius:999px;margin-left:10px;vertical-align:4px}
+.route .best.fast{background:var(--slate);color:#fff}
+.route .best+.best{margin-left:6px}
+.stat{font-size:.85rem;color:var(--ink-soft)}
+.stat b{display:block;font:800 1.6rem/1 var(--display);color:var(--ink)}
+.chev{width:22px;height:22px;transition:transform .2s;justify-self:end}
+.route[data-open="true"] .chev{transform:rotate(180deg)}
+.route .body{display:none;padding:0 4px 30px}
+.route[data-open="true"] .body{display:block}
+@media (max-width:760px){
+  .route>button.head{grid-template-columns:minmax(0,1fr) 28px;}
+  .route .stats-m{grid-column:1/-1;display:flex;gap:28px}
+  .route .stat.d{display:none}
+  .route .best,.route .best+.best{display:inline-block;margin:8px 6px 0 0;vertical-align:0}
+  .route .name{display:block}
+}
+@media (min-width:761px){.route .stats-m{display:none}}
+
+.cols{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:36px}
+@media (max-width:860px){.cols{grid-template-columns:1fr}}
+.steps{margin:0;padding-left:1.3em}
+.steps li{margin-bottom:.55em}
+.costbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.costbox table{width:100%;border-collapse:collapse;font-size:.97rem}
+.costbox td{padding:7px 0;border-bottom:1px dashed var(--line)}
+.costbox td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.costbox tr.total td{border-bottom:0;font-weight:700;padding-top:10px}
+.note{font-size:.92rem;color:var(--ink-soft)}
+.warn{border-left:4px solid var(--red);background:color-mix(in srgb,var(--red) 8%,transparent);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.95rem;margin:14px 0}
+
+/* seat block */
+.seats{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:6px}
+.seats h4{margin:0 0 4px;font:800 1.35rem/1.1 var(--display)}
+.seat-row{display:flex;gap:8px;margin:12px 0 10px}
+.seat{width:38px;height:38px;border-radius:10px;border:2px dashed var(--line);display:grid;place-items:center;font:700 .85rem/1 var(--body);color:var(--ink-soft)}
+.seat.taken{border:2px solid var(--slate);background:var(--slate);color:#fff}
+.seat.mine{border-color:var(--amber);background:var(--amber);color:#1C1406}
+.who{font-size:.92rem;color:var(--ink-soft);margin:0 0 12px}
+form.inline{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+form.inline>.btn{margin-top:24px}
+label{display:block;font-size:.85rem;font-weight:600;margin-bottom:4px}
+input,select,textarea{font:400 1rem/1.3 var(--body);padding:11px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+input:focus,select:focus{border-color:var(--amber);outline:none}
+.f{flex:1 1 170px}
+.hint{font-size:.8rem;color:var(--ink-soft);margin-top:4px}
+
+/* ride board */
+.board{display:grid;gap:14px;margin:8px 0 22px}
+.ride{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 20px}
+.ride h4{margin:0;font:800 1.4rem/1.1 var(--display)}
+.ride .meta{font-size:.93rem;color:var(--ink-soft)}
+.ride .each{text-align:right}
+.ride .each b{display:block;font:800 1.7rem/1 var(--display)}
+.ride .actions{grid-column:1/-1}
+.sd{border-top:1px dashed var(--line);padding:12px 0 4px}
+.sd-head{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+fieldset.stations-pick{border:1px solid var(--line);border-radius:10px;padding:10px 14px 12px;margin:0;min-width:0}
+fieldset.stations-pick legend{font-size:.85rem;font-weight:600;padding:0 4px}
+label.chk{display:inline-flex;align-items:center;gap:6px;font-weight:400;font-size:.95rem;margin:4px 16px 4px 0}
+label.chk input{width:auto}
+.rider-preview{border:1.5px dashed var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px}
+.empty{border:2px dashed var(--line);border-radius:14px;padding:22px;text-align:center;color:var(--ink-soft)}
+details.offer{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 20px}
+details.offer summary{cursor:pointer;font-weight:700;padding:14px 0}
+.grid-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding-bottom:20px}
+.grid-form .wide{grid-column:span 3}
+@media (max-width:700px){.grid-form{grid-template-columns:1fr 1fr}.grid-form .wide{grid-column:span 2}}
+.calc{grid-column:span 3;background:var(--bg);border-radius:10px;padding:12px 14px;font-size:.95rem}
+@media (max-width:700px){.calc{grid-column:span 2}}
+
+/* ───────── Trails ───────── */
+.trails{background:var(--surface)}
+.trail{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px 48px;padding:40px 0;border-top:1px solid var(--line)}
+.trail:first-of-type{border-top:2px solid var(--ink)}
+@media (max-width:860px){.trail{grid-template-columns:1fr}}
+.blazes{display:flex;gap:6px;margin-bottom:14px}
+.blaze{width:16px;height:26px;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.blaze.white{background:var(--blaze-white);box-shadow:inset 0 0 0 1.5px #8C9A9E}
+.blaze.red{background:var(--blaze-red)}
+.blaze.blue{background:var(--blaze-blue)}
+.blaze.yellow{background:#E8C33A}
+.trail h3{font-size:clamp(2.2rem,4vw,3rem);margin-bottom:10px}
+.diff{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-weight:700}
+.diff .pips{display:flex;gap:4px}
+.diff .pips i{width:22px;height:8px;border-radius:2px;background:var(--line)}
+.diff .pips i.on{background:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.facts div{border-top:2px solid var(--line);padding-top:8px;font-size:.85rem;color:var(--ink-soft)}
+.facts b{display:block;font:800 1.65rem/1 var(--display);color:var(--ink)}
+.tag-warn{display:inline-block;font-weight:700;font-size:.85rem;color:var(--red);margin-bottom:10px}
+.chart{width:100%;height:auto;overflow:visible}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .axis{fill:var(--ink-soft);font:400 12px var(--body)}
+.chart .area{opacity:.16}
+.chart .ln{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.chart .pk{font:800 15px var(--display);fill:var(--ink)}
+.voteline{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:20px}
+.tally{flex:1 1 220px}
+.tally .bar{height:10px;border-radius:999px;background:var(--line);overflow:hidden}
+.tally .bar i{display:block;height:100%;background:var(--amber);width:0;transition:width .5s}
+.tally small{display:block;margin-top:6px;color:var(--ink-soft)}
+.lead{font:700 .8rem/1 var(--body);background:var(--slate);color:#fff;padding:5px 9px;border-radius:999px;margin-left:8px;vertical-align:6px}
+.voter{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;margin-bottom:6px;max-width:520px}
+
+/* ───────── Dinner (after sunset) ───────── */
+.dinner{background:linear-gradient(180deg,#2A2F4E 0%,#1E2238 100%);color:#E8EAF4}
+.dinner .lede{color:#B9BEDA}
+.dinner h2{color:#fff}
+.dinner label{color:#D5D9EE}
+.dinner input{background:rgba(255,255,255,.06);border-color:#4A5078;color:#fff}
+.dinner input::placeholder{color:#8E94B8}
+.dn-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px 56px;align-items:start}
+@media (max-width:860px){.dn-grid{grid-template-columns:1fr}}
+.dn-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+@media (max-width:520px){
+  .dn-choices{grid-template-columns:1fr;gap:8px}
+  .dn-choices .dn-choice{display:grid;grid-template-columns:52px 1fr;grid-template-rows:auto auto;gap:0 12px;align-items:center;padding:12px 16px}
+  .dn-choices .dn-choice b{grid-row:span 2;font-size:2.2rem}
+}
+.dn-choice{all:unset;box-sizing:border-box;cursor:pointer;border:1.5px solid #4A5078;border-radius:16px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;transition:background .15s,border-color .15s}
+.dn-choice:hover{background:rgba(255,255,255,.05)}
+.dn-choice:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.dn-choice b{font:800 2.6rem/1 var(--display);color:#fff;font-variant-numeric:tabular-nums}
+.dn-choice span{font-weight:700}
+.dn-choice small{color:#A7ADCF;font-size:.85rem}
+.dn-choice[aria-pressed="true"]{background:var(--dusk);border-color:var(--dusk);color:#141C3A}
+.dn-choice[aria-pressed="true"] b,.dn-choice[aria-pressed="true"] small{color:#141C3A}
+.dn-who{border-top:2px solid #4A5078;padding-top:14px}
+.dn-who h3{font-size:1.5rem;color:#fff;margin-bottom:8px}
+.dn-who p{color:#C7CBE3;margin:0 0 6px}
+.dn-who .note{color:#9AA0C4}
+
+.places{margin-top:56px;border-top:2px solid #4A5078;padding-top:28px}
+.places-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:12px 48px;align-items:end;margin-bottom:22px}
+@media (max-width:760px){.places-head{grid-template-columns:1fr}}
+.places-head h3{font-size:clamp(2rem,4vw,2.8rem);color:#fff}
+.places-head p{color:#B9BEDA;margin:0}
+.place-list{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:10px}
+.place{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:6px 16px;align-items:center;border:1.5px solid #4A5078;border-radius:14px;padding:14px 16px}
+.place.top{border-color:var(--dusk);background:rgba(154,166,214,.08)}
+.place .votes{font:800 2.2rem/1 var(--display);color:#fff;text-align:center;font-variant-numeric:tabular-nums}
+.place .votes small{display:block;font:600 .7rem/1.2 var(--body);color:#9AA0C4}
+.place h4{margin:0;font:800 1.45rem/1.1 var(--display);color:#fff}
+.place .pmeta{color:#A7ADCF;font-size:.9rem;margin-top:3px}
+.place .pbar{height:6px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:8px}
+.place .pbar i{display:block;height:100%;background:var(--dusk)}
+.place .pact{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.place .btn.ghost{color:#E8EAF4}
+.place .btn.mine{background:var(--dusk);color:#141C3A;border-color:var(--dusk)}
+.place .rm{all:unset;cursor:pointer;font-size:.8rem;color:#9AA0C4;text-decoration:underline}
+.place .rm:focus-visible{outline:2px solid var(--amber)}
+.lead-tag{display:inline-block;font:700 .75rem/1 var(--body);background:var(--dusk);color:#141C3A;padding:4px 8px;border-radius:999px;margin-left:8px;vertical-align:4px}
+@media (max-width:560px){.place{grid-template-columns:40px minmax(0,1fr)}.place .pact{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between}}
+.place-empty{border:1.5px dashed #4A5078;border-radius:14px;padding:20px;color:#B9BEDA;text-align:center}
+.place-form{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
+.place-form .f{flex:1 1 220px}
+.place-form .wide2{flex:2 1 300px}
+.place-form>.btn{margin-top:24px}
+
+/* ───────── Gallery ───────── */
+.gallery{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:14px}
+.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:6px}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery .a{grid-row:span 2}
+.gallery figcaption{position:absolute;left:12px;bottom:10px;color:#fff;font-size:.88rem;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+@media (max-width:700px){.gallery{grid-template-columns:1fr}.gallery .a{grid-row:auto}}
+
+/* ───────── Know ───────── */
+.know{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.know h3{font-size:1.6rem;margin-bottom:8px}
+@media (max-width:860px){.know{grid-template-columns:1fr}}
+footer{padding:40px 0 60px;color:var(--ink-soft);font-size:.9rem;border-top:1px solid var(--line)}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%) translateY(calc(100% + 60px));visibility:hidden;background:var(--slate);color:#fff;padding:14px 20px;border-radius:12px;font-weight:600;z-index:50;transition:transform .25s,visibility 0s .25s;max-width:calc(100% - 32px)}
+.toast.show{transform:translateX(-50%) translateY(0);visibility:visible;transition:transform .25s}
+.toast.err{background:var(--red)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<div class="demo" id="demoBanner" hidden>Preview mode: seats and votes only save in this browser until the Google Sheet is connected.</div>
+
+<!-- ───────── Hero ───────── -->
+<header class="hero">
+  <picture>
+    <source media="(min-width:900px)" srcset="img/bridge-2400.jpg">
+    <img class="bg" src="img/bridge-1200.jpg" alt="The Bear Mountain Bridge over the Hudson, seen through pine branches from the trail">
+  </picture>
+  <svg class="profile" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="ridgeFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#E0962A" stop-opacity=".16"/><stop offset="1" stop-color="#E0962A" stop-opacity="0"/></linearGradient></defs>
+    <path class="fill" d="M0,372 L120,366 L210,352 L290,318 L360,300 L420,262 L480,236 L540,190 L590,170 L640,126 L700,104 L760,70 L800,58 L840,40 L880,48 L930,60 L1000,66 L1000,400 L0,400Z"/>
+    <path class="ridge" pathLength="1" d="M0,372 L120,366 L210,352 L290,318 L360,300 L420,262 L480,236 L540,190 L590,170 L640,126 L700,104 L760,70 L800,58 L840,40 L880,48 L930,60 L1000,66"/>
+  </svg>
+  <div class="peak-tag summit"><b>1,289 ft</b>Perkins Tower, the top</div>
+  <div class="wrap">
+    <h1>Bear<br>Mountain</h1>
+    <div class="when">
+      <div><strong>Sunday, Oct 25</strong><span>Fall colors, one summit</span></div>
+      <div><strong>10–11 AM</strong><span>Meet at the Bear Mountain Inn parking lot</span></div>
+      <div><strong>6:01 PM</strong><span>Sunset. Back at the lot, then Maghrib together</span></div>
+    </div>
+    <nav class="hero-links" aria-label="Sections">
+      <a class="btn" href="#ride">Choose your ride</a>
+      <a class="btn ghost" href="#trail">Vote on the trail</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ───────── The day ───────── -->
+<section class="day" id="day">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The plan for the day</h2>
+      <p class="lede">The goal is the summit, and the day is paced around the prayers: Dhuhr on a break on the way up, Asr at the top, and Maghrib back at the lot. Everyone is down before sunset.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-marks" aria-hidden="true">
+        <span class="tl-mark" style="left:38.9%">Dhuhr</span>
+        <span class="tl-mark" style="left:63.1%">Asr</span>
+        <span class="tl-mark" style="left:83.5%">Maghrib</span>
+      </div>
+      <div class="tl-bar" role="img" aria-label="Daylight from 8 AM to 8 PM. Dhuhr at 12:40 PM, Asr at 3:34 PM (4:19 PM Hanafi), sunset and Maghrib at 6:01 PM">
+        <div class="tl-hike" style="left:25%;width:58.3%"></div>
+        <div class="tl-sun" style="left:38.9%"></div>
+        <div class="tl-sun" style="left:63.1%"></div>
+        <div class="tl-sun" style="left:83.5%"></div>
+      </div>
+      <div class="tl-scale"><span>8 AM</span><span>11 AM</span><span>2 PM</span><span>5 PM</span><span>8 PM</span></div>
+      <ol class="tl-events">
+        <li><time>10–11 AM</time><p>Meet at the Bear Mountain Inn lot. Bathrooms, water and wudu here.</p></li>
+        <li><time>~11 AM</time><p>Start the hike on the trail that wins the vote.</p></li>
+        <li class="key"><time>12:40 PM</time><p>Dhuhr. Break partway up to pray and eat lunch.</p></li>
+        <li><time>~3:15 PM</time><p>Reach the summit at Perkins Tower. Rest and take in the view.</p></li>
+        <li class="key"><time>3:34 PM</time><p>Asr at the summit (Shafi’i and others; 4:19 PM Hanafi), then start down.</p></li>
+        <li><time>~5:30 PM</time><p>Everyone back down at the lot, with a buffer before dark.</p></li>
+        <li class="key"><time>6:01 PM</time><p>Sunset. Maghrib together, about 10–15 minutes.</p></li>
+        <li><time>~6:20 PM</time><p>Head home, or <a href="#dinner">join dinner</a> if you're up for it.</p></li>
+      </ol>
+      <p class="tl-note">Prayer times are for Bear Mountain on Oct 25. Asr is 3:34 PM for Shafi’i and others, and 4:19 PM by the Hanafi calculation. Either way we pray at the summit; Hanafi folks start down right after and are still back before sunset. Bring water for wudu on the trail. On the Four Peaks route we pass Bear’s summit early, so Asr would be on the trail instead.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Getting there ───────── -->
+<section id="ride">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Getting there</h2>
+      <p class="lede">Pick where you're coming from, then sort by cost or travel time. Seats in cars are first come, first served, so claim yours below. Costs are round trip, per person.</p>
+    </div>
+    <div class="picker">
+      <span class="q" id="pickq">I'm coming from</span>
+      <div class="seg" role="group" aria-labelledby="pickq" id="boroughs"></div>
+    </div>
+    <div class="picker">
+      <span class="q" id="sortq">Sort by</span>
+      <div class="seg" role="group" aria-labelledby="sortq" id="sorter"></div>
+    </div>
+    <ul class="routes" id="routes"></ul>
+    <p class="note" style="margin-top:18px"><strong>How the badges work:</strong> “Lowest cost” and “Fastest” are worked out from the prices and times shown here, for the area you picked. Price ranges count from their lowest price. Carpool and rental only count once someone has posted a ride with open seats. <br><strong>About the times:</strong> they’re rough, door to parking lot. Train times include a guess for the subway to Grand Central (or your nearest Metro-North stop): about 20 minutes from Manhattan or the Bronx, 45 from Brooklyn or Queens, and 75 from Staten Island with the ferry. Your own ride could be much shorter or longer, so check your route and add or subtract the difference. Driving times assume light Sunday traffic. Train options also include a $3 subway or bus fare each way. Metro-North fares are off-peak (all Sunday trains), bought in the TrainTime app or at a machine. Gas is estimated at $4.35/gallon, the NYC average this month.</p>
+  </div>
+</section>
+
+<!-- ───────── Trails ───────── -->
+<section class="trails" id="trail">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Vote on the trail</h2>
+      <p class="lede">Every option ends at the top. The trail with the most votes is the one we hike. One vote per person, and you can change it until Saturday night.</p>
+    </div>
+    <form class="voter" id="voterForm" onsubmit="return false">
+      <div class="f"><label for="voterName">Your name</label><input id="voterName" autocomplete="given-name" placeholder="First name and last initial"></div>
+    </form>
+    <p class="note" style="margin-bottom:8px">The shapes below are simplified elevation profiles, drawn to the same height scale.</p>
+    <div id="trailList"></div>
+  </div>
+</section>
+
+<!-- ───────── Dinner ───────── -->
+<section class="dinner" id="dinner">
+  <div class="wrap">
+    <div class="dn-grid">
+      <div>
+        <h2>Dinner after?</h2>
+        <p class="lede" style="margin-top:16px">After Maghrib, anyone who's up for it can grab dinner together. Let us know if you're in so we know how big a table we need, then help pick where we eat below.</p>
+        <form class="voter" id="dinnerForm" onsubmit="return false" style="margin-top:22px">
+          <div class="f"><label for="dinnerName">Your name</label><input id="dinnerName" autocomplete="given-name" placeholder="First name and last initial"></div>
+        </form>
+        <div class="dn-choices" id="dinnerChoices" role="group" aria-label="Are you coming to dinner?"></div>
+      </div>
+      <div class="dn-who" id="dinnerWho"></div>
+    </div>
+    <div class="places">
+      <div class="places-head">
+        <h3>Where should we eat?</h3>
+        <p>Suggest a restaurant or vote for one already on the list. Everyone gets one vote and can change it. The place with the most votes is where we go; if there’s a tie, we decide on the day.</p>
+      </div>
+      <ol class="place-list" id="placeList"></ol>
+      <form class="place-form" id="placeForm">
+        <div class="f"><label for="placeName">Restaurant</label><input id="placeName" maxlength="60" placeholder="Name of the place" required></div>
+        <div class="f wide2"><label for="placeNote">Why this one? (optional)</label><input id="placeNote" maxlength="80" placeholder="e.g. Halal, 20 min from the park, good for groups"></div>
+        <button class="btn" type="submit">Suggest this place</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Gallery ───────── -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>From last year</h2>
+      <p class="lede">The Inn where we meet, Hessian Lake at the bottom of the trails, and the view from the top: Manhattan on the horizon, about 45 miles away.</p>
+    </div>
+    <div class="gallery">
+      <figure class="a"><img loading="lazy" src="img/summit-skyline-1600.jpg" alt="Layered ridges at dusk with the Manhattan skyline on the horizon"><figcaption>The view from the summit</figcaption></figure>
+      <figure><img loading="lazy" src="img/inn-1600.jpg" alt="The stone and timber Bear Mountain Inn with fall trees and the mountain behind"><figcaption>Bear Mountain Inn, our meeting point</figcaption></figure>
+      <figure><img loading="lazy" src="img/lake-1600.jpg" alt="Black and white photo of reeds growing in Hessian Lake"><figcaption>Hessian Lake</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Good to know ───────── -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Good to know</h2><p></p></div>
+    <div class="know">
+      <div><h3>Arrive early if driving</h3><p>Bear Mountain fills up on fall weekends. On Oct 18 the park hit capacity and closed to new cars, and roadside parking isn't allowed. Aim for the lot by 10 AM. Parking is $10 per car.</p></div>
+      <div><h3>Bring</h3><p>Shoes with real grip (the stone steps and rock slabs get slick), 1–2 liters of water plus a little extra for wudu, lunch for the Dhuhr break, a warm layer for the summit, a headlamp just in case, and something to pray on.</p></div>
+      <div><h3>Trail detours</h3><p>Construction near the Inn has rerouted the start of the Appalachian, Major Welch and Suffern–Bear Mountain trails. Follow the posted detour signs; the group will start together.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Questions? Ask in the group chat. Organized by Khalid and friends.</p>
+    <p class="note">Train times come from Metro-North's fall weekend schedule (Oct 4 – Nov 8). Double-check your exact train in the TrainTime app the night before.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ═════════ CONFIG — edit these ═════════ */
+const CONFIG = {
+  // Paste your Google Apps Script web app URL here (see SETUP.md). Leave '' for preview mode.
+  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwshmiEA4BWJcbyfWClVsXx1L9W7_LcO4UEJg3lJQyOr3NvlDdad7KBC9PV6NQ6fOI/exec',
+  GAS_PRICE: 4.35,          // $/gallon, regular, NYC
+  PARKING: 10,              // $ per car at Bear Mountain
+  // Khalid's EV makes two runs to the Inn, 4 passenger seats each.
+  // Run 1: White Plains. Run 2: Peekskill, then Manitou. Times are when he leaves each station.
+  KHALID_PICKUPS: { 'White Plains':'9:30 AM', 'Peekskill':'10:40 AM', 'Manitou':'10:50 AM' },
+  SUBWAY_FARE: 3.00,          // NYC subway/bus, each ride (to and from Grand Central)
+  STATIONS: ['White Plains', 'Peekskill', 'Manitou'],
+};
+/* ═══════════════════════════════════════ */
+
+const DEMO = !CONFIG.SCRIPT_URL;
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money = n => '$' + (Math.round(n)).toLocaleString();
+
+/* Borough data: minutes to Grand Central (or a Metro-North stop), one-way driving miles and minutes to Bear Mountain. Approximate. */
+const BOROUGHS = {
+  manhattan:   { label:'Manhattan',     toTrain:20, miles:48, drive:65 },
+  bronx:       { label:'The Bronx',     toTrain:20, miles:44, drive:55 },
+  brooklyn:    { label:'Brooklyn',      toTrain:45, miles:60, drive:85 },
+  queens:      { label:'Queens',        toTrain:45, miles:55, drive:80 },
+  statenisland:{ label:'Staten Island', toTrain:75, miles:58, drive:80 },
+};
+
+/* ── Trails ── */
+const TRAILS = [
+  { id:'stone-steps', name:'The Stone Steps', trails:'Appalachian Trail, up and back', blazes:['white'], level:2, levelName:'Moderate',
+    miles:'~4', gain:'~1,200 ft', time:'3–3½ hrs', color:'var(--blaze-blue)',
+    blurb:'The steady way up. Hundreds of granite steps with switchbacks, benches and views over Iona Island and the Hudson the whole way. Easiest footing of the three, and we come down the same way.',
+    pts:[[0,160],[.4,230],[.9,480],[1.3,760],[1.7,1010],[2,1289],[2.3,1010],[2.7,760],[3.1,480],[3.6,230],[4,160]] },
+  { id:'classic-loop', name:'The Classic Loop', trails:'Major Welch up, Appalachian Trail down', blazes:['red','white'], level:3, levelName:'Challenging',
+    miles:'4.2', gain:'~1,340 ft', time:'3–3½ hrs', color:'var(--blaze-red)',
+    blurb:'The favorite. Flat around Hessian Lake, then a steep climb up open rock slabs where you sometimes use your hands, with big views of the bridge and river. Down the stone steps on the other side.',
+    pts:[[0,160],[.6,175],[1,330],[1.35,700],[1.65,1050],[1.9,1289],[2.3,1120],[2.8,820],[3.4,480],[3.9,230],[4.2,160]] },
+  { id:'four-peaks', name:'The Four Peaks', trails:'Bear, West, Timp and Bald Mountains', blazes:['white','blue','red','blue'], level:5, levelName:'Hard',
+    miles:'12.2', gain:'~3,200 ft', time:'5–7 hrs', color:'var(--amber)', warn:'Tight for sunset. Only works if we start right at 10 AM and keep a strong pace.',
+    blurb:'The big day. Summit Bear Mountain, then continue over West Mountain, The Timp and Bald Mountain, coming back through the old Doodletown hamlet. Several steep climbs and descents.',
+    pts:[[0,160],[1.5,800],[2.3,1289],[3.2,700],[4.3,1257],[5.4,950],[6.4,600],[7.2,1000],[8.1,550],[9,1128],[10,500],[11.2,250],[12.2,160]] },
+];
+
+/* ── API (Google Sheet) with a local fallback for preview ── */
+const LS = { get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}, set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}} };
+let STATE = { rides:[], votes:{}, voters:0 };
+let claims = LS.get('bm26-claims', {});     // rideId -> {id, secret}
+let myRides = LS.get('bm26-myrides', {});   // rideId -> secret
+let myVote = LS.get('bm26-vote', null);
+let borough = LS.get('bm26-borough', 'manhattan');
+let openRoute = null;
+
+function demoDB(){
+  let db = LS.get('bm26-demo3', null);
+  if (!db) db = { rides:[
+      {id:'khalid-wp',type:'khalid',driver:'Khalid',borough:'White Plains',pickup:'White Plains station',seats:4,stations:['White Plains'],riders:[]},
+      {id:'khalid-st',type:'khalid',driver:'Khalid',borough:'Peekskill',pickup:'Peekskill and Manitou stations',seats:4,stations:['Peekskill','Manitou'],riders:[]}],
+    votes:{'stone-steps':0,'classic-loop':0,'four-peaks':0}, voterNames:{} };
+  db.dinner = db.dinner || {};   // lowercased name -> {name, answer}
+  db.places = db.places || [];   // {id, name, note, by, secret}
+  db.placeVotes = db.placeVotes || {};   // lowercased voter -> placeId
+  return db;
+}
+function demoCall(b){
+  const db = demoDB(); const uid = () => Math.random().toString(36).slice(2,10);
+  let result = {};
+  if (b.action==='claim'){
+    if(!b.name) throw new Error('Add your name to claim a seat.');
+    const r = db.rides.find(x=>x.id===b.rideId); if(!r) throw new Error('That ride no longer exists.');
+    if (r.riders.length >= r.seats) throw new Error('That ride just filled up. Pick another option.');
+    if (r.type==='khalid' && !b.stop) throw new Error('Pick where Khalid should pick you up.');
+    if (b.stop && !(r.stations||[]).includes(b.stop)) throw new Error(`That car isn’t stopping at ${b.stop}.`);
+    const id=uid(), secret=uid(); r.riders.push({id,name:b.name,secret,stop:b.stop||''}); result.claimed={id,secret,rideId:r.id};
+  } else if (b.action==='release'){
+    db.rides.forEach(r=> r.riders = r.riders.filter(x=>!(x.id===b.id && x.secret===b.secret))); result.released=b.id;
+  } else if (b.action==='offer'){
+    if(!b.driver) throw new Error('Add the driver’s name.');
+    const id=uid(), secret=uid(); db.rides.push({...b, stations:(b.stations||[]).filter(x=>CONFIG.STATIONS.includes(x)), id, secret, seats:+b.seats||1, mpg:+b.mpg||0, rentalCost:+b.rentalCost||0, tolls:+b.tolls||0, type:b.type==='rental'?'rental':'own', riders:[]});
+    result.offered={id,secret};
+  } else if (b.action==='withdraw'){
+    db.rides = db.rides.filter(r=>!(r.id===b.id && r.secret===b.secret)); result.withdrawn=b.id;
+  } else if (b.action==='vote'){
+    if(!b.name) throw new Error('Add your name to vote.');
+    const key=b.name.toLowerCase(), prev=db.voterNames[key];
+    if(prev) db.votes[prev]--; db.votes[b.trail]++; db.voterNames[key]=b.trail; result.voted=b.trail;
+  } else if (b.action==='dinner'){
+    if(!b.name) throw new Error('Add your name to answer.');
+    const key=b.name.toLowerCase(), changed=!!db.dinner[key];
+    db.dinner[key]={name:b.name, answer:b.answer}; result.dinner=b.answer; result.changed=changed;
+  } else if (b.action==='suggest'){
+    if(!b.name) throw new Error('Add your name to suggest a place.');
+    if(!b.place) throw new Error('Add the restaurant’s name.');
+    const dup = db.places.find(x=>x.name.toLowerCase()===b.place.toLowerCase());
+    if (dup){ db.placeVotes[b.name.toLowerCase()]=dup.id; result.suggested=dup.id; result.duplicate=true; }
+    else { const id=uid(), secret=uid(); db.places.push({id,name:b.place,note:b.note||'',by:b.name,secret}); db.placeVotes[b.name.toLowerCase()]=id; result.suggested=id; result.secret=secret; }
+  } else if (b.action==='placeVote'){
+    if(!b.name) throw new Error('Add your name to vote.');
+    if(!db.places.some(x=>x.id===b.placeId)) throw new Error('That restaurant was removed. Pick another.');
+    const k=b.name.toLowerCase(); result.changed=!!db.placeVotes[k]; db.placeVotes[k]=b.placeId; result.placeVoted=b.placeId;
+  } else if (b.action==='removePlace'){
+    const pl = db.places.find(x=>x.id===b.id && x.secret===b.secret); if(!pl) throw new Error('Only the person who suggested a place can remove it.');
+    db.places = db.places.filter(x=>x!==pl); Object.keys(db.placeVotes).forEach(k=>{ if(db.placeVotes[k]===b.id) delete db.placeVotes[k]; }); result.removed=b.id;
+  }
+  LS.set('bm26-demo3', db);
+  return { ...publicDemo(db), result };
+}
+function publicDemo(db){
+  return { ok:true, rides: db.rides.map(r=>({...r, secret:undefined, riders:r.riders.map(x=>({id:x.id,name:x.name,stop:x.stop||''}))})),
+           votes: db.votes, voters: Object.keys(db.voterNames).length, dinner: dinnerTally(Object.values(db.dinner)),
+           places: db.places.map(x=>({id:x.id,name:x.name,note:x.note,by:x.by,votes:Object.values(db.placeVotes).filter(v=>v===x.id).length})).sort((a,c)=>c.votes-a.votes) };
+}
+function dinnerTally(list){
+  const d = {yes:0, maybe:0, no:0, yesNames:[], maybeNames:[]};
+  list.forEach(x=>{ if(d[x.answer]===undefined) return; d[x.answer]++; if(x.answer==='yes') d.yesNames.push(x.name); if(x.answer==='maybe') d.maybeNames.push(x.name); });
+  return d;
+}
+async function load(){
+  try{
+    STATE = DEMO ? publicDemo(demoDB()) : await (await fetch(CONFIG.SCRIPT_URL, {cache:'no-store'})).json();
+  }catch(e){ toast('Couldn’t load live seats. Check your connection and refresh.', true); }
+  render();
+}
+async function call(body){
+  try{
+    const res = DEMO ? demoCall(body) : await (await fetch(CONFIG.SCRIPT_URL, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(body)})).json();
+    if (res.ok === false) throw new Error(res.error || 'Something went wrong. Try again.');
+    STATE = res; render(); return res.result || {};
+  }catch(e){ toast(e.message, true); await load(); return null; }
+}
+
+/* ── helpers ── */
+const subwayRT = () => CONFIG.SUBWAY_FARE*2;
+const cents = n => '$' + (Math.round(n*100)/100).toFixed(2);
+function seatsLeft(r){ return Math.max(0, r.seats - (r.riders||[]).length); }
+function rideById(id){ return STATE.rides.find(r=>r.id===id); }
+function carCost({miles, mpg=25, tolls=0, rental=0, people}){
+  const gal = (miles*2)/(mpg||25), gas = gal*CONFIG.GAS_PRICE, total = gas + CONFIG.PARKING + (+tolls||0) + (+rental||0);
+  return { gal, gas, total, each: total/Math.max(1,people) };
+}
+let tt; function toast(msg, err){ const t=$('#toast'); t.textContent=msg; t.classList.toggle('err',!!err); t.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'), 4200); }
+const chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>';
+
+/* ── Route definitions (re-computed per borough) ── */
+const subNote = b => `each way, incl. ~${b.toTrain} min subway (est.)`;
+function routes(){
+  const b = BOROUGHS[borough];
+  const own = carCost({miles:b.miles, people:5});   // full-size sedan: driver + 4 riders
+  const rides = STATE.rides;
+  const fmtSeats = id => { const r = rideById(id); return r ? `${seatsLeft(r)} of ${r.seats} seats left` : ''; };
+  return [
+    { id:'carpool', name:'Carpool with a driver', sub:'Someone drives from the city and riders split gas, parking and tolls. Drivers, post your car here.',
+      cost: own.each, costLabel:`~${money(own.each)}`, time: b.drive + 10, timeNote:'each way, light traffic', avail: rides.some(r=>r.type==='own' && seatsLeft(r)>0) },
+    { id:'rental', name:'Share a rental car', sub:'No car? Rent one together and split the rental, gas, parking and tolls. Renters, post it here.',
+      cost: carCost({miles:b.miles, rental:110, people:5}).each, costLabel:`~${money(carCost({miles:b.miles, rental:110, people:5}).each)}`, time: b.drive + 40, timeNote:'each way, incl. car pickup', avail: rides.some(r=>r.type==='rental' && seatsLeft(r)>0) },
+    { id:'khalid-wp', name:'Train to White Plains, then Khalid drives', sub:`Subway to Grand Central, Metro-North Harlem Line to White Plains, then Khalid’s EV up and back. Khalid’s car: ${fmtSeats('khalid-wp')}.`,
+      cost: 20.5+subwayRT(), costLabel:cents(20.5+subwayRT()), time: b.toTrain + 40 + 60, timeNote:subNote(b), avail: rides.some(r=>(r.id==='khalid-wp' || (r.stations||[]).includes('White Plains') && r.type!=='khalid') && seatsLeft(r)>0) },
+    { id:'peekskill', name:'Train to Peekskill, then a ride or a taxi', sub:`Subway to Grand Central, Metro-North Hudson Line to Peekskill, then a seat in Khalid’s EV (${fmtSeats('khalid-st')}, shared with Manitou), another driver’s car, or a 15-minute taxi.`,
+      cost: 28+subwayRT(), costLabel:`$${28+subwayRT()}–${46+subwayRT()}`, time: b.toTrain + 75 + 15, timeNote:subNote(b), avail: true },
+    { id:'manitou', name:'Train to Manitou, then a ride, taxi or the bridge', sub:`Subway to Grand Central, then Metro-North to this weekend-only station across the river. Khalid (${fmtSeats('khalid-st')}, shared with Peekskill) or another driver picks you up, take a taxi, or walk an hour over the Bear Mountain Bridge.`,
+      cost: 32+subwayRT(), costLabel:`$${32+subwayRT()}–${50+subwayRT()}`, time: b.toTrain + 80 + 15, timeNote:subNote(b), avail: true },
+  ];
+}
+
+function renderPicker(){
+  $('#boroughs').innerHTML = Object.entries(BOROUGHS).map(([k,v])=>`<button type="button" data-b="${k}" aria-pressed="${k===borough}">${v.label}</button>`).join('');
+}
+document.addEventListener('click', e=>{
+  const bb = e.target.closest('[data-b]');
+  if (bb){ borough = bb.dataset.b; LS.set('bm26-borough', borough); renderPicker(); renderRoutes(); }
+  const h = e.target.closest('button.head');
+  if (h){ const id=h.dataset.route; openRoute = openRoute===id? null : id; renderRoutes(); if(openRoute) $('#route-'+id).scrollIntoView({block:'nearest'}); }
+});
+
+function hm(min){ const h=Math.floor(min/60), m=Math.round(min%60/5)*5; return h? `${h}h${m? ' '+m+'m':''}` : `${m}m`; }
+
+let sortBy = LS.get('bm26-sort', 'cost');
+function renderSorter(){
+  $('#sorter').innerHTML = [['cost','Lowest cost'],['time','Fastest']].map(([k,l])=>`<button type="button" data-sort="${k}" aria-pressed="${k===sortBy}">${l}</button>`).join('');
+}
+document.addEventListener('click', e=>{ const b=e.target.closest('[data-sort]'); if(b){ sortBy=b.dataset.sort; LS.set('bm26-sort', sortBy); renderSorter(); renderRoutes(); } });
+
+function renderRoutes(){
+  const all = routes();
+  // Badges use only the numbers shown on the page. Carpool and rental count once a ride with open seats is posted.
+  const ok = all.filter(r=>r.avail);
+  const cheapest = ok.reduce((a,r)=>!a||r.cost<a.cost?r:a, null), fastest = ok.reduce((a,r)=>!a||r.time<a.time?r:a, null);
+  const key = sortBy==='time' ? 'time' : 'cost', other = key==='time' ? 'cost' : 'time';
+  const list = [...all].sort((x,y)=> (y.avail-x.avail) || (x[key]-y[key]) || (x[other]-y[other]));
+  list.forEach(r=>{ if(!r.avail) r.sub += r.id==='khalid-wp' ? ' Khalid’s car is full right now.' : ` No ${r.id==='rental'?'rentals':'cars'} with open seats posted yet.`; });
+  $('#routes').innerHTML = list.map((r,i)=>`
+    <li class="route" id="route-${r.id}" data-open="${openRoute===r.id}">
+      <button class="head" type="button" data-route="${r.id}" aria-expanded="${openRoute===r.id}" aria-controls="body-${r.id}">
+        <span><span class="name">${esc(r.name)}</span>${cheapest&&cheapest.id===r.id?'<span class="best">Lowest cost</span>':''}${fastest&&fastest.id===r.id?'<span class="best fast">Fastest</span>':''}<span class="sub">${esc(r.sub)}</span></span>
+        <span class="stat d"><b>${r.costLabel}</b>per person, round trip</span>
+        <span class="stat d"><b>~${hm(r.time)}</b>${esc(r.timeNote)}</span>
+        ${chev}
+        <span class="stats-m"><span class="stat"><b>${r.costLabel}</b>per person, round trip</span><span class="stat"><b>~${hm(r.time)}</b>${esc(r.timeNote)}</span></span>
+      </button>
+      <div class="body" id="body-${r.id}">${openRoute===r.id ? detail(r.id) : ''}</div>
+    </li>`).join('');
+  document.querySelectorAll('form[data-offer]').forEach(updateCalc);
+}
+
+/* Khalid's EV: two runs, 4 passenger seats each */
+const khalidRun = stop => stop==='White Plains' ? 'khalid-wp' : 'khalid-st';
+function seatBlock(stop){
+  const id = khalidRun(stop), r = rideById(id); if(!r) return '';
+  const wp = id==='khalid-wp', stations = r.stations || [];
+  const mine = claims[id], left = seatsLeft(r);
+  const dots = Array.from({length:r.seats},(_,i)=>{ const p=r.riders[i]; const isMine = p && mine && p.id===mine.id;
+    return `<span class="seat ${p?'taken':''} ${isMine?'mine':''}" title="${p?esc(p.name+(p.stop?' · '+p.stop:'')):'Open'}">${p? esc(p.name.slice(0,1).toUpperCase()) : ''}</span>`; }).join('');
+  const stops = stations.map(s=>{
+    const who = r.riders.filter(p=>p.stop===s).map(p=>esc(p.name));
+    return `<tr><td>${s===stop?'<strong>':''}${esc(s)} station${s===stop?'</strong>':''}<br><span class="note">${who.length? who.join(', ') : 'No one yet'}</span></td><td>${esc(CONFIG.KHALID_PICKUPS[s]||'')}</td></tr>`; }).join('');
+  return `<div class="seats">
+    <h4>${wp ? 'Khalid’s car, run 1: White Plains' : 'Khalid’s car, run 2: Peekskill and Manitou'}</h4>
+    <div class="note">${wp ? 'An EV with 4 passenger seats, straight to the Inn.' : 'After dropping off the White Plains group, Khalid comes back for 4 more: Peekskill first, then Manitou. The 4 seats are shared between the two stations.'} ${left? `${left} seat${left>1?'s':''} open.` : 'Full.'}</div>
+    <div class="seat-row" aria-hidden="true">${dots}</div>
+    <div class="costbox" style="margin:4px 0 14px;padding:6px 14px"><table>${stops}</table></div>
+    ${mine ? `<p><strong>You have a seat.</strong> <button class="btn small ghost" data-release="${id}">Give up my seat</button></p>`
+      : left ? claimForm(id, stop, stations) : `<p class="note">This run is full. ${wp ? 'Try the Peekskill or Manitou options, or check back in case someone drops out.' : 'Try another driver below, a taxi from the station, or check back in case someone drops out.'}</p>`}
+  </div>`;
+}
+function claimForm(id, stop, opts){
+  const n = LS.get('bm26-name','');
+  const stopField = !stop ? ''
+    : (opts||[]).length > 1 ? `<div class="f"><label for="cs-${id}">Pick me up at</label><select id="cs-${id}" name="stop">${opts.map(s=>`<option${s===stop?' selected':''}>${esc(s)}</option>`).join('')}</select></div>`
+    : `<input type="hidden" name="stop" value="${esc(stop)}">`;
+  return `<form class="inline" data-claim="${id}">
+    <div class="f"><label for="cn-${id}">Your name</label><input id="cn-${id}" name="name" required value="${esc(n)}" autocomplete="name"></div>
+    ${stopField}
+    <div class="f"><label for="cc-${id}">Phone or email</label><input id="cc-${id}" name="contact" required autocomplete="tel"><div class="hint">Only the organizers see this.</div></div>
+    <button class="btn" type="submit">Claim a seat</button>
+  </form>`;
+}
+
+/* Other drivers who offered to stop at a station */
+function stationDrivers(stop){
+  const list = STATE.rides.filter(r=>r.type!=='khalid' && (r.stations||[]).includes(stop));
+  const cards = list.map(r=>{
+    const left = seatsLeft(r), mine = claims[r.id], isDriver = myRides[r.id];
+    const here = r.riders.filter(p=>p.stop===stop).map(p=>esc(p.name));
+    return `<div class="sd">
+      <div class="sd-head"><strong>${esc(r.driver)}’s ${r.type==='rental'?'rental':'car'}</strong><span class="note">from ${esc(r.borough)}${r.departTime? `, leaves ${esc(r.departTime)}`:''} · ${left} of ${r.seats} seats left</span></div>
+      ${here.length? `<div class="note">Picking up here: ${here.join(', ')}</div>`:''}
+      ${r.driverContact? `<div class="note">Contact: ${esc(r.driverContact)}</div>`:''}
+      ${isDriver ? `<p class="note" style="margin:8px 0 0">This is your car. Riders at ${esc(stop)} can claim seats here.</p>`
+        : mine ? `<p style="margin:8px 0 0"><strong>You have a seat.</strong> <button class="btn small ghost" data-release="${r.id}">Give up my seat</button></p>`
+        : left ? claimForm(r.id, stop, [stop]) : '<p class="note">Full.</p>'}
+    </div>`; }).join('');
+  return `<div class="seats" style="margin-top:16px">
+    <h4>Other drivers stopping at ${esc(stop)}</h4>
+    <div class="note" style="margin-bottom:10px">Drivers coming up from the city who offered to pick up and drop off here. The ride from the station is free; chip in a few dollars for gas if you like.</div>
+    ${cards || `<p class="note" style="margin:0">No one yet. Drivers can tick ${esc(stop)} when they post their car under <em>Carpool</em> or <em>Rental</em>.</p>`}
+  </div>`;
+}
+
+function detail(id){
+  const b = BOROUGHS[borough];
+  if (id==='khalid-wp') return `<div class="cols">
+    <div>
+      <ol class="steps">
+        <li>Take the Metro-North <strong>Harlem Line</strong> from Grand Central (or Harlem–125th St / Fordham) to <strong>White Plains</strong>, about 35–40 minutes. Trains run every 30 minutes on Sundays.</li>
+        <li>Be at White Plains station by <strong>${esc(CONFIG.KHALID_PICKUPS['White Plains'])}</strong>. Khalid drives you straight to the Inn in his EV, about 45 minutes, so you’re there around 10:15.</li>
+        <li>After Maghrib, Khalid first runs the Peekskill and Manitou riders to their trains, then drives the White Plains group back, reaching the station around 7:45 PM. Harlem Line trains to the city run until late.</li>
+      </ol>
+      <div class="costbox"><table>
+        <tr><td>Subway or bus to Grand Central and back (2 × ${cents(CONFIG.SUBWAY_FARE)})</td><td>${cents(subwayRT())}</td></tr>
+        <tr><td>Train to White Plains (off-peak)</td><td>$10.25</td></tr>
+        <tr><td>Train back to Grand Central</td><td>$10.25</td></tr>
+        <tr><td>Khalid’s car</td><td>Free</td></tr>
+        <tr class="total"><td>Your total, round trip</td><td>${cents(20.5+subwayRT())}</td></tr></table></div>
+    </div>
+    <div>${seatBlock('White Plains')}${stationDrivers('White Plains')}</div>
+  </div>`;
+
+  if (id==='peekskill') return `<div class="cols">
+    <div>
+      <ol class="steps">
+        <li>Take the Metro-North <strong>Hudson Line</strong> from Grand Central (or Harlem–125th St / Marble Hill) to <strong>Peekskill</strong>, about 70–80 minutes. To ride with Khalid, take the train arriving at about <strong>10:38 AM</strong>.</li>
+        <li>From the station it’s 8 miles to the Inn, about 15 minutes by car. Khalid picks up here on his second run, leaving at <strong>${esc(CONFIG.KHALID_PICKUPS['Peekskill'])}</strong>, and other drivers may offer pickups too. Otherwise share a taxi or Uber/Lyft (about $30–40 for the car, split up to 4 ways).</li>
+        <li>Going home: drivers drop their station riders back at Peekskill, and everyone else shares a taxi. Southbound trains leave Peekskill at about 6:42 PM and <strong>7:42 PM</strong>; after Maghrib, plan on the 7:42.</li>
+      </ol>
+      <div class="costbox"><table>
+        <tr><td>Subway or bus to Grand Central and back (2 × ${cents(CONFIG.SUBWAY_FARE)})</td><td>${cents(subwayRT())}</td></tr>
+        <tr><td>Train to Peekskill (off-peak)</td><td>$14.00</td></tr>
+        <tr><td>Train back to Grand Central</td><td>$14.00</td></tr>
+        <tr><td>A driver’s car (free), or your share of a taxi both ways</td><td>$0 – $18</td></tr>
+        <tr class="total"><td>Your total, round trip</td><td>$${28+subwayRT()} – $${46+subwayRT()}</td></tr></table></div>
+    </div>
+    <div>${seatBlock('Peekskill')}${stationDrivers('Peekskill')}</div>
+  </div>`;
+
+  if (id==='manitou') return `<div class="cols">
+    <div>
+      <ol class="steps">
+        <li>Take the Metro-North <strong>Hudson Line</strong> to <strong>Manitou</strong>, about 75–80 minutes. Only some trains stop here, and only on weekends. Make sure yours does.</li>
+        <li>Get to the Inn, about 4 miles across the bridge. Pick one:
+          <ul style="margin:6px 0 0;padding-left:1.1em">
+            <li><strong>Khalid’s EV</strong> on his second run, leaving the station at ${esc(CONFIG.KHALID_PICKUPS['Manitou'])}, or <strong>another driver</strong> who offered a pickup here. Free.</li>
+            <li><strong>Taxi or Uber/Lyft</strong>, about $25–35 per car each way, split up to 4 ways. Rideshare cars are scarce out here, so book a local taxi ahead.</li>
+            <li><strong>Walk</strong> south on Route 9D and over the Bear Mountain Bridge walkway, about an hour. Free.</li>
+          </ul></li>
+        <li>Going home: drivers drop their station riders back at Manitou after Maghrib, and everyone else shares a taxi. Southbound trains leave Manitou at about 6:33 PM and <strong>7:33 PM</strong> (the last one); after Maghrib, plan on the 7:33.</li>
+      </ol>
+      <div class="costbox"><table>
+        <tr><td>Subway or bus to Grand Central and back (2 × ${cents(CONFIG.SUBWAY_FARE)})</td><td>${cents(subwayRT())}</td></tr>
+        <tr><td>Train to Manitou (off-peak)</td><td>$16.00</td></tr>
+        <tr><td>Train back to Grand Central</td><td>$16.00</td></tr>
+        <tr><td>A driver’s car or walking (free), or your share of a taxi both ways</td><td>$0 – $18</td></tr>
+        <tr class="total"><td>Your total, round trip</td><td>$${32+subwayRT()} – $${50+subwayRT()}</td></tr></table></div>
+      <h3 style="font-size:1.5rem;margin:22px 0 8px">Sunday trains at Manitou</h3>
+      <p class="note">From Metro-North’s fall weekend schedule (Oct 4 – Nov 8). Only some trains stop here and a few run Saturdays only, so confirm yours in TrainTime.</p>
+      <div class="costbox"><table>
+        <tr><td><strong>Arrive Manitou</strong> (from the city)</td><td>9:07, 10:06, 10:46 AM</td></tr>
+        <tr><td>To ride with Khalid (${esc(CONFIG.KHALID_PICKUPS['Manitou'])})</td><td>The 10:46 AM arrival</td></tr>
+        <tr><td><strong>Leave Manitou</strong> (to the city)</td><td>…5:28, 6:17, 6:33, 7:33 PM</td></tr></table></div>
+      <div class="warn">The last train leaves Manitou around 7:33 PM. Without a seat in a car, don’t walk the bridge back in the dark: book a taxi to Manitou, or to Peekskill for more trains.</div>
+    </div>
+    <div>${seatBlock('Manitou')}${stationDrivers('Manitou')}</div>
+  </div>`;
+
+  if (id==='carpool' || id==='rental') return board(id==='rental'?'rental':'own', b);
+  return '';
+}
+
+function board(type, b){
+  const rides = STATE.rides.filter(r=>r.type===type);
+  const est = carCost({miles:b.miles, rental: type==='rental'?110:0, people:5});
+  const cards = rides.length ? rides.map(r=>{
+    const miles = (BOROUGHS[Object.keys(BOROUGHS).find(k=>BOROUGHS[k].label===r.borough)]||b).miles;
+    const people = r.seats + 1;
+    const c = carCost({miles, mpg:r.mpg||25, tolls:r.tolls, rental:r.rentalCost, people});
+    const left = seatsLeft(r), mine = claims[r.id], isDriver = myRides[r.id];
+    return `<article class="ride">
+      <div>
+        <h4>${esc(r.driver)}’s ${type==='rental'?'rental':'car'} from ${esc(r.borough)}</h4>
+        <div class="meta">Pickup: ${esc(r.pickup||'ask the driver')}${r.departTime? ` · leaves ${esc(r.departTime)}`:''} · ${left} of ${r.seats} seats left</div>
+        ${(r.stations||[]).length? `<div class="meta">Also stops at: ${r.stations.map(esc).join(', ')} station${r.stations.length>1?'s':''}</div>`:''}
+        ${r.riders.length? `<div class="meta">Riding: ${r.riders.map(p=>esc(p.name)+(p.stop?` (${esc(p.stop)})`:'')).join(', ')}</div>`:''}
+        ${r.notes? `<div class="meta">${esc(r.notes)}</div>`:''}
+        ${r.driverContact? `<div class="meta">Contact: ${esc(r.driverContact)}</div>`:''}
+      </div>
+      <div class="each"><b>~${money(c.each)}</b><span class="note">per person, round trip, when full</span></div>
+      <div class="actions">
+        <details><summary class="note">How this is calculated</summary><p class="note" style="margin-top:6px">${Math.round(miles*2)} miles round trip ÷ ${r.mpg||25} mpg = ${c.gal.toFixed(1)} gallons × $${CONFIG.GAS_PRICE} = ${money(c.gas)} gas, + $${CONFIG.PARKING} parking${r.tolls? ` + ${money(r.tolls)} tolls`:''}${r.rentalCost? ` + ${money(r.rentalCost)} rental`:''} = ${money(c.total)}, split ${people} ways (driver included).</p></details>
+        ${isDriver ? `<div class="driver-view">
+              <p class="note" style="margin:10px 0"><strong>This is your ${type==='rental'?'rental':'car'}.</strong> Riders see a <em>Claim a seat</em> form here, and their names appear on this card as they sign up.</p>
+              ${DEMO && left ? `<div class="rider-preview"><p class="note" style="margin:0 0 8px">Preview of what riders see:</p>${claimForm(r.id)}</div>` : ''}
+              <button class="btn small ghost" data-withdraw="${r.id}">Remove my ${type==='rental'?'rental':'car'}</button>
+            </div>`
+          : mine ? `<p style="margin:8px 0 0"><strong>You have a seat.</strong> <button class="btn small ghost" data-release="${r.id}">Give up my seat</button></p>`
+          : left ? claimForm(r.id) : '<p class="note">Full.</p>'}
+      </div>
+    </article>`; }).join('')
+  : `<div class="empty">No ${type==='rental'?'rentals':'cars'} posted yet. ${type==='rental'?'Planning to rent? Post it below so others can join.':'Driving? Post your car below and riders can claim seats.'}</div>`;
+
+  return `<div class="cols">
+    <div>
+      <p>${type==='rental'
+        ? `A full-size sedan seats the driver plus 4, so the cost splits five ways and usually beats train fares. Rough guide from ${esc(b.label)}: about $110 for a one-day rental, plus gas, $10 parking and any tolls.`
+        : `Riders split the real costs: gas, $10 parking and any tolls. Rough guide from ${esc(b.label)} with 5 people (driver + 4) in a 25 mpg car:`}</p>
+      <div class="costbox"><table>
+        <tr><td>Gas, ${b.miles*2} miles round trip</td><td>${money(est.gas)}</td></tr>
+        ${type==='rental'?'<tr><td>Rental, one day (estimate)</td><td>~$110</td></tr>':''}
+        <tr><td>Parking at Bear Mountain</td><td>$10</td></tr>
+        <tr><td>Tolls</td><td>Driver adds</td></tr>
+        <tr class="total"><td>Each of 5 people, round trip total</td><td>~${money(est.each)}</td></tr></table></div>
+      <p class="note" style="margin-top:10px">The driver pays at the pump; riders pay the driver back.</p>
+    </div>
+    <div>
+      <div class="board">${cards}</div>
+      ${offerForm(type)}
+    </div>
+  </div>`;
+}
+
+function offerForm(type){
+  const opts = Object.values(BOROUGHS).map(v=>`<option${v.label===BOROUGHS[borough].label?' selected':''}>${v.label}</option>`).join('');
+  return `<details class="offer" ${STATE.rides.filter(r=>r.type===type).length? '' : 'open'}>
+    <summary>${type==='rental'?'Post a rental you’ll share':'Offer seats in your car'}</summary>
+    <form class="grid-form" data-offer="${type}">
+      <div><label>Driver name</label><input name="driver" required value="${esc(LS.get('bm26-name',''))}"></div>
+      <div><label>Leaving from</label><select name="borough">${opts}</select></div>
+      <div><label>Open seats</label><input name="seats" type="number" min="1" max="7" value="4" required></div>
+      <div><label>Pickup spot</label><input name="pickup" placeholder="e.g. Astoria Blvd station"></div>
+      <div><label>Leaving at</label><input name="departTime" placeholder="e.g. 8:45 AM"></div>
+      <div><label>Car's mpg</label><input name="mpg" type="number" min="8" max="80" value="25"><div class="hint">Not sure? 25 is typical.</div></div>
+      ${type==='rental'?'<div><label>Rental cost ($)</label><input name="rentalCost" type="number" min="0" value="110"></div>':''}
+      <div><label>Tolls, round trip ($)</label><input name="tolls" type="number" min="0" value="0"></div>
+      <div><label>Your contact (shown on the page)</label><input name="driverContact" placeholder="Optional"></div>
+      <div class="wide"><label>Notes</label><input name="notes" placeholder="e.g. Room for one big backpack each"></div>
+      <fieldset class="wide stations-pick"><legend>Can you also pick up and drop off train riders? (optional)</legend>
+        ${CONFIG.STATIONS.map(st=>`<label class="chk"><input type="checkbox" name="stations" value="${st}"> ${st} station</label>`).join('')}
+        <div class="hint">Train riders at these stations will be able to claim your open seats.</div>
+      </fieldset>
+      <div class="calc" data-calc></div>
+      <div class="wide"><button class="btn" type="submit">${type==='rental'?'Post rental':'Post my car'}</button></div>
+    </form>
+  </details>`;
+}
+function updateCalc(form){
+  const f = new FormData(form), bk = Object.values(BOROUGHS).find(v=>v.label===f.get('borough'))||BOROUGHS[borough];
+  const people = (+f.get('seats')||1) + 1;
+  const c = carCost({miles:bk.miles, mpg:+f.get('mpg')||25, tolls:f.get('tolls'), rental:f.get('rentalCost')||0, people});
+  form.querySelector('[data-calc]').innerHTML = `Estimated total <strong>${money(c.total)}</strong> (${c.gal.toFixed(1)} gal of gas + parking${+f.get('tolls')?' + tolls':''}${+f.get('rentalCost')?' + rental':''}). With every seat filled, that’s <strong>${money(c.each)} per person for the round trip</strong>, including you.`;
+}
+document.addEventListener('input', e=>{ const f=e.target.closest('form[data-offer]'); if(f) updateCalc(f); });
+
+document.addEventListener('submit', async e=>{
+  const f = e.target;
+  if (f.dataset.claim){ e.preventDefault();
+    const fd = new FormData(f), name=fd.get('name').trim(); LS.set('bm26-name', name);
+    const btn = f.querySelector('button'); btn.disabled=true;
+    const res = await call({action:'claim', rideId:f.dataset.claim, name, contact:fd.get('contact'), stop:fd.get('stop')||''});
+    if (res && res.claimed){ claims[res.claimed.rideId] = res.claimed; LS.set('bm26-claims', claims); renderRoutes(); toast('Seat claimed. See you Sunday!'); }
+    else btn.disabled=false;
+  }
+  if (f.dataset.offer){ e.preventDefault();
+    const raw = new FormData(f), fd = Object.fromEntries(raw); fd.stations = raw.getAll('stations'); LS.set('bm26-name', fd.driver);
+    const res = await call({action:'offer', type:f.dataset.offer, ...fd});
+    if (res && res.offered){ myRides[res.offered.id] = res.offered.secret; LS.set('bm26-myrides', myRides); renderRoutes(); toast(f.dataset.offer==='rental'?'Rental posted.':'Car posted. Riders can now claim seats.'); }
+  }
+});
+document.addEventListener('click', async e=>{
+  const r = e.target.closest('[data-release]');
+  if (r){ const c = claims[r.dataset.release]; if(!c) return;
+    if (await call({action:'release', id:c.id, secret:c.secret})){ delete claims[r.dataset.release]; LS.set('bm26-claims', claims); renderRoutes(); toast('Seat given up. Thanks for freeing it.'); } }
+  const w = e.target.closest('[data-withdraw]');
+  if (w){ if(w.dataset.armed!=='1'){ w.dataset.armed='1'; w.textContent='Tap again to remove. Riders lose their seats.'; setTimeout(()=>{ if(w.isConnected){ w.dataset.armed=''; w.textContent='Remove my ride'; } }, 5000); return; }
+    if (await call({action:'withdraw', id:w.dataset.withdraw, secret:myRides[w.dataset.withdraw]})){ delete myRides[w.dataset.withdraw]; LS.set('bm26-myrides', myRides); renderRoutes(); toast('Ride removed.'); } }
+  const v = e.target.closest('[data-vote]');
+  if (v){ const name = $('#voterName').value.trim();
+    if(!name){ $('#voterName').focus(); toast('Add your name first, then vote.', true); return; }
+    LS.set('bm26-name', name);
+    const res = await call({action:'vote', trail:v.dataset.vote, name});
+    if (res && res.voted){ myVote = res.voted; LS.set('bm26-vote', myVote); renderTrails(); toast(res.changed? 'Vote changed.' : 'Vote counted.'); } }
+});
+
+/* ── Trails ── */
+function profileSVG(t){
+  const W=560,H=200,pad={l:44,r:12,t:16,b:28}, maxE=1400, maxD=t.pts[t.pts.length-1][0];
+  const x=d=>pad.l+(d/maxD)*(W-pad.l-pad.r), y=e=>pad.t+(1-e/maxE)*(H-pad.t-pad.b);
+  const line=t.pts.map((p,i)=>`${i?'L':'M'}${x(p[0]).toFixed(1)},${y(p[1]).toFixed(1)}`).join(' ');
+  const area=`${line} L${x(maxD)},${y(0)} L${x(0)},${y(0)} Z`;
+  const top=t.pts.reduce((a,p)=>p[1]>a[1]?p:a);
+  const grid=[0,500,1000].map(e=>`<line class="grid" x1="${pad.l}" x2="${W-pad.r}" y1="${y(e)}" y2="${y(e)}"/><text class="axis" x="${pad.l-8}" y="${y(e)+4}" text-anchor="end">${e? e.toLocaleString():'0'}</text>`).join('');
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Elevation profile: ${t.miles} miles, peaks at 1,289 feet">
+    ${grid}<text class="axis" x="${pad.l-8}" y="${pad.t-4}" text-anchor="end">ft</text>
+    <path class="area" d="${area}" fill="${t.color}"/><path class="ln" d="${line}" stroke="${t.color}"/>
+    <circle cx="${x(top[0])}" cy="${y(top[1])}" r="5" fill="${t.color}"/>
+    <text class="pk" x="${x(top[0])}" y="${y(top[1])-12}" text-anchor="middle">Summit</text>
+    <text class="axis" x="${pad.l}" y="${H-6}">Inn</text><text class="axis" x="${W-pad.r}" y="${H-6}" text-anchor="end">${t.miles} mi</text>
+  </svg>`;
+}
+function renderTrails(){
+  const total = Object.values(STATE.votes||{}).reduce((a,b)=>a+b,0);
+  const leader = total ? Object.entries(STATE.votes).sort((a,b)=>b[1]-a[1])[0][0] : null;
+  $('#trailList').innerHTML = TRAILS.map(t=>{
+    const n = (STATE.votes||{})[t.id]||0, pct = total? Math.round(n/total*100):0, mine = myVote===t.id;
+    return `<article class="trail">
+      <div>
+        <div class="blazes" aria-label="Trail blazes">${t.blazes.map(c=>`<span class="blaze ${c}"></span>`).join('')}</div>
+        <h3>${esc(t.name)}${leader===t.id?'<span class="lead">Leading</span>':''}</h3>
+        <p class="note" style="margin-bottom:10px">${esc(t.trails)}</p>
+        <div class="diff"><span class="pips" aria-hidden="true">${[1,2,3,4,5].map(i=>`<i class="${i<=t.level?'on':''}"></i>`).join('')}</span>${esc(t.levelName)}</div>
+        ${t.warn? `<span class="tag-warn">${esc(t.warn)}</span>`:''}
+        <p>${esc(t.blurb)}</p>
+        <div class="facts"><div><b>${t.miles} mi</b>round trip</div><div><b>${t.gain}</b>climb</div><div><b>${t.time}</b>with breaks</div></div>
+      </div>
+      <div>
+        ${profileSVG(t)}
+        <div class="voteline">
+          <button class="btn ${mine?'':'ghost'}" style="${mine?'':'color:var(--ink)'}" data-vote="${t.id}" aria-pressed="${mine}">${mine?'Your vote':'Vote for this trail'}</button>
+          <div class="tally"><div class="bar"><i style="width:${pct}%"></i></div><small>${n} vote${n===1?'':'s'}${total? ` · ${pct}%`:''}</small></div>
+        </div>
+      </div>
+    </article>`; }).join('');
+}
+
+/* ── Dinner ── */
+let myDinner = LS.get('bm26-dinner', null);
+const DINNER_OPTS = [
+  { id:'yes',   label:'I’m in',          hint:'Count me for the table' },
+  { id:'maybe', label:'Maybe',           hint:'Depends how I feel after' },
+  { id:'no',    label:'Not this time',   hint:'Heading straight home' },
+];
+function renderDinner(){
+  const d = STATE.dinner || {yes:0,maybe:0,no:0,yesNames:[],maybeNames:[]};
+  $('#dinnerChoices').innerHTML = DINNER_OPTS.map(o=>`
+    <button type="button" class="dn-choice" data-dinner="${o.id}" aria-pressed="${myDinner===o.id}">
+      <b>${d[o.id]||0}</b><span>${o.label}</span><small>${myDinner===o.id ? 'Your answer' : o.hint}</small>
+    </button>`).join('');
+  const table = (d.yes||0) + (d.maybe||0);
+  $('#dinnerWho').innerHTML = `
+    <h3>${d.yes ? `Table for ${d.yes}${d.maybe? `, maybe ${table}`:''}` : 'No one yet'}</h3>
+    ${d.yesNames.length ? `<p><strong>In:</strong> ${d.yesNames.map(esc).join(', ')}</p>` : '<p>Be the first to say you’re in.</p>'}
+    ${d.maybeNames.length ? `<p><strong>Maybe:</strong> ${d.maybeNames.map(esc).join(', ')}</p>` : ''}
+    <p class="note" style="margin-top:12px">You can change your answer any time.</p>`;
+}
+function syncName(v){ LS.set('bm26-name', v); ['#voterName','#dinnerName'].forEach(s=>{ const el=$(s); if(el && el!==document.activeElement) el.value=v; }); }
+document.addEventListener('input', e=>{ if(e.target.id==='voterName'||e.target.id==='dinnerName') syncName(e.target.value.trim()); });
+document.addEventListener('click', async e=>{
+  const c = e.target.closest('[data-dinner]'); if(!c) return;
+  const name = $('#dinnerName').value.trim();
+  if(!name){ $('#dinnerName').focus(); toast('Add your name first, then answer.', true); return; }
+  syncName(name);
+  const res = await call({action:'dinner', answer:c.dataset.dinner, name});
+  if (res && res.dinner){ myDinner = res.dinner; LS.set('bm26-dinner', myDinner); renderDinner();
+    toast(res.changed ? 'Answer changed.' : res.dinner==='yes' ? 'You’re in for dinner.' : res.dinner==='maybe' ? 'Marked as maybe.' : 'Got it. Thanks for letting us know.'); }
+});
+
+/* ── Restaurant suggestions ── */
+let myPlaceVote = LS.get('bm26-placevote', null);
+let myPlaces = LS.get('bm26-myplaces', {});   // placeId -> secret (places I suggested)
+function renderPlaces(){
+  const list = STATE.places || [], total = list.reduce((a,x)=>a+x.votes,0), top = list.length ? list[0].votes : 0;
+  const tied = list.filter(x=>x.votes===top).length > 1;
+  $('#placeList').innerHTML = list.length ? list.map(x=>{
+    const lead = top>0 && x.votes===top && !tied, mine = myPlaceVote===x.id, pct = total? Math.round(x.votes/total*100) : 0;
+    return `<li class="place ${lead?'top':''}">
+      <div class="votes">${x.votes}<small>vote${x.votes===1?'':'s'}</small></div>
+      <div>
+        <h4>${esc(x.name)}${lead?'<span class="lead-tag">Leading</span>':''}${top>0 && x.votes===top && tied?'<span class="lead-tag">Tied</span>':''}</h4>
+        <div class="pmeta">${x.note? esc(x.note)+'. ':''}Suggested by ${esc(x.by)}</div>
+        <div class="pbar"><i style="width:${pct}%"></i></div>
+      </div>
+      <div class="pact">
+        <button type="button" class="btn small ${mine?'mine':'ghost'}" data-pvote="${x.id}" aria-pressed="${mine}">${mine?'Your vote':'Vote'}</button>
+        ${myPlaces[x.id]? `<button type="button" class="rm" data-premove="${x.id}">Remove</button>`:''}
+      </div>
+    </li>`; }).join('')
+  : '<li class="place-empty">No suggestions yet. Add the first one below.</li>';
+}
+function needName(){
+  const name = $('#dinnerName').value.trim();
+  if(!name){ $('#dinnerName').focus(); toast('Add your name at the top of this section first.', true); return null; }
+  syncName(name); return name;
+}
+document.addEventListener('submit', async e=>{
+  if (e.target.id!=='placeForm') return; e.preventDefault();
+  const name = needName(); if(!name) return;
+  const place = $('#placeName').value.trim(), note = $('#placeNote').value.trim(); if(!place) return;
+  const res = await call({action:'suggest', name, place, note});
+  if (res && res.suggested){
+    myPlaceVote = res.suggested; LS.set('bm26-placevote', myPlaceVote);
+    if (res.secret){ myPlaces[res.suggested]=res.secret; LS.set('bm26-myplaces', myPlaces); }
+    $('#placeName').value=''; $('#placeNote').value=''; renderPlaces();
+    toast(res.duplicate ? 'That place is already listed, so your vote went to it.' : 'Place added, with your vote.');
+  }
+});
+document.addEventListener('click', async e=>{
+  const v = e.target.closest('[data-pvote]');
+  if (v){ const name = needName(); if(!name) return;
+    const res = await call({action:'placeVote', name, placeId:v.dataset.pvote});
+    if (res && res.placeVoted){ myPlaceVote=res.placeVoted; LS.set('bm26-placevote', myPlaceVote); renderPlaces(); toast(res.changed?'Vote changed.':'Vote counted.'); } }
+  const rm = e.target.closest('[data-premove]');
+  if (rm){ if(rm.dataset.armed!=='1'){ rm.dataset.armed='1'; rm.textContent='Tap again to remove'; setTimeout(()=>{ if(rm.isConnected){ rm.dataset.armed=''; rm.textContent='Remove'; } }, 5000); return; }
+    const id = rm.dataset.premove, res = await call({action:'removePlace', id, secret:myPlaces[id]});
+    if (res && res.removed){ delete myPlaces[id]; LS.set('bm26-myplaces', myPlaces); if(myPlaceVote===id){ myPlaceVote=null; LS.set('bm26-placevote', null); } renderPlaces(); toast('Place removed.'); } }
+});
+
+function render(){ renderRoutes(); renderTrails(); renderDinner(); renderPlaces(); }
+
+/* ── init ── */
+if (DEMO) $('#demoBanner').hidden = false;
+$('#voterName').value = LS.get('bm26-name','');
+$('#dinnerName').value = LS.get('bm26-name','');
+renderPicker(); renderSorter(); render(); load();
+setInterval(()=>{ if(!document.hidden && !document.querySelector('form :focus')) load(); }, 30000);
+</script>
+</body>
+</html>
